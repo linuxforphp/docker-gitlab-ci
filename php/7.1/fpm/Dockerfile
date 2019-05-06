@@ -22,3 +22,5 @@ RUN curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar \
     && ln -s /usr/local/bin/phpcbf.phar /usr/bin/phpcbf
 
 COPY msmtprc /etc/
+
+CMD ["lfphp", "--phpfpm"]
