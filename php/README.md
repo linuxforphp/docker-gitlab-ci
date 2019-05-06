@@ -8,7 +8,7 @@ https://linuxforphp.net
 
 [CHANGELOG](https://github.com/linuxforphp/docker-gitlab-ci/blob/master/CHANGELOG.md)
 
-**Linux for PHP** Docker images for continuous integration and running tests. These images can be used with Gitlab CI,
+**Linux for PHP** Docker images for continuous integration and running tests. These images can be used with GitLab CI,
 or any automated testing system or as standalone services.
 
 # Supported tags and respective `Dockerfile` links
@@ -16,28 +16,24 @@ or any automated testing system or as standalone services.
 -	[`5.6-nts`, (*5.6/Dockerfile*)](https://github.com/linuxforphp/docker-gitlab-ci/blob/master/php/5.6/Dockerfile)
 -	[`7.0-nts`, (*7.0/Dockerfile*)](https://github.com/linuxforphp/docker-gitlab-ci/blob/master/php/7.0/Dockerfile)
 -	[`7.1-nts`, (*7.1/Dockerfile*)](https://github.com/linuxforphp/docker-gitlab-ci/blob/master/php/7.1/Dockerfile)
--	[`7.2-nts`, (*7.1/Dockerfile*)](https://github.com/linuxforphp/docker-gitlab-ci/blob/master/php/7.2/Dockerfile)
--	[`7.3-nts`, (*7.1/Dockerfile*)](https://github.com/linuxforphp/docker-gitlab-ci/blob/master/php/7.3/Dockerfile)
-
-Images do not have `VOLUME` directories since fresh version of sources is supposed to be downloaded into image each time before running tests
+-	[`7.2-nts`, (*7.2/Dockerfile*)](https://github.com/linuxforphp/docker-gitlab-ci/blob/master/php/7.2/Dockerfile)
+-	[`7.3-nts`, (*7.3/Dockerfile*)](https://github.com/linuxforphp/docker-gitlab-ci/blob/master/php/7.3/Dockerfile)
 
 These images are built from [Linux for PHP official Docker images](https://hub.docker.com/r/asclinux/linuxforphp-8.1-ultimate), and additionally include:
 
- - All extensions are compiled and ready and loaded
- - PECL extensions: memcached, redis, mongodb, xdebug
- - sendmail command via msmtp, configured as relay to localhost. Check `/etc/msmtprc` to setup relay server
- - Git client
- - Composer
- - PHPUnit - latest stable version for php >= 5.6 and PHPUnit 4.8 for php < 5.6
- - PHP Code Sniffer - latest stable version of `phpcs` and `phpcbf` commands
- - Node.js v10 from official Node.js repositories
-
-See below for details
+ - All extensions are compiled and ready and loaded,
+ - PECL extensions: memcached, redis, mongodb, xdebug,
+ - sendmail command via msmtp, configured as relay to localhost. Check `/etc/msmtprc` to setup relay server,
+ - Git client,
+ - Composer,
+ - PHPUnit - latest stable version for php >= 5.6 and PHPUnit 4.8 for php < 5.6,
+ - PHP Code Sniffer - latest stable version of `phpcs` and `phpcbf` commands,
+ - Node.js v10 from official Node.js repositories.
 
 ## Advantages of these images
 
- - Builds are based on the official Linux for PHP images (standard C toolchain)
- - Automatically rebuilt when official images are updated, so this repository always contains the latest versions
+ - Builds are based on the official Linux for PHP images (standard C toolchain).
+ - Automatically rebuilt when official images are updated, so this repository always contains the latest versions.
 
 # Quick start guide
 
@@ -46,7 +42,7 @@ Check the [Quick start guide](https://github.com/linuxforphp/docker-gitlab-ci/bl
 Check the [Example projects](https://github.com/linuxforphp/docker-gitlab-ci/tree/master/examples)
 
 ## PHP modules
-All major modules are enabled by default (compiled-in) and some are installed using PECL
+All major modules are enabled by default (compiled-in) and some are installed using PECL.
 
 ### Compiled-in modules
 ```
@@ -62,15 +58,15 @@ bcmath bz2 calendar ctype curl date dba dom ereg enchant exif fileinfo filter ft
 memcached mongodb redis xdebug
 ```
 
-For more information check the [Github repository](https://github.com/linuxforphp/docker-gitlab-ci/)
+For more information check the [GitHub repository](https://github.com/linuxforphp/docker-gitlab-ci/).
 
 ## Environment variables
 
-There are environment variables which can be passed to images on docker run
+There are environment variables which can be passed to images on `docker run`.
 
- - `WITHOUT_XDEBUG=1` - disables xdebug extension
- - `TIMEZONE=America/New_York` - set system and `php.ini` timezone. You can also set timezone in .gitlab-ci.yml - check [Example](https://github.com/linuxforphp/docker-gitlab-ci/blob/master/examples/purephp/.gitlab-ci.yml)
- - `COMPOSER_GITHUB=<YOUR_GITHUB_TOKEN>` - Adds Github oauth token for Composer, which allows Composer to get unlimited repositories from Github without blocking non-interactive mode with request for authorization. You can obtain your token at [https://github.com/settings/tokens](https://github.com/settings/tokens)
+ - `WITHOUT_XDEBUG=1` - disables xdebug extension,
+ - `TIMEZONE=America/New_York` - set system and `php.ini` timezone. You can also set timezone in .gitlab-ci.yml - check [Example](https://github.com/linuxforphp/docker-gitlab-ci/blob/master/examples/purephp/.gitlab-ci.yml),
+ - `COMPOSER_GITHUB=<YOUR_GITHUB_TOKEN>` - Adds GitHub oauth token for Composer, which allows Composer to get unlimited repositories from Github without blocking non-interactive mode with request for authorization. You can obtain your token at [https://github.com/settings/tokens](https://github.com/settings/tokens).
 
     [Composer documentation about Github API rate limit](https://getcomposer.org/doc/articles/troubleshooting.md#api-rate-limit-and-oauth-tokens)
 
@@ -78,4 +74,4 @@ There are environment variables which can be passed to images on docker run
 
 1. **How to set custom php.ini values**
 
-   Easiest way is to mount your local php.ini on container start like `docker run ... -v /home/user/php.ini:/etc/php.ini ...`
+   Easiest way is to mount your local `php.ini` on container start like `docker run ... -v /home/user/php.ini:/etc/php.ini ...`
