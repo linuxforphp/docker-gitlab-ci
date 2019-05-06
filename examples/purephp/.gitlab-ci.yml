@@ -1,34 +1,41 @@
 #before_script:
-#    - docker-php-ext-enable igbinary xdebug zip
+#    -
 
 variables:
   # Timezone will be used both for system and php date.timezone php.ini value
-  TIMEZONE: "Europe/Moscow"
-
-php-5.5:
-  image: tetraweb/php:5.5
-  services:
-    - tetraweb/mysql
-  script:
-    - _tests/test.sh
+  TIMEZONE: "America/New_York"
 
 php-5.6:
-  image: tetraweb/php:5.6
+  image: asclinux/linuxforphp-8.1-ultimate:5.6-nts
   services:
-    - tetraweb/mysql
+    - mysql:latest
   script:
     - _tests/test.sh
 
 php-7.0:
-  image: tetraweb/php:7.0
+  image: asclinux/linuxforphp-8.1-ultimate:7.0-nts
   services:
-    - tetraweb/mysql
+    - mysql:latest
   script:
     - _tests/test.sh
 
 php-7.1:
-  image: tetraweb/php:7.1
+  image: asclinux/linuxforphp-8.1-ultimate:7.1-nts
   services:
-    - tetraweb/mysql
+    - mysql:latest
+  script:
+    - _tests/test.sh
+
+php-7.2:
+  image: asclinux/linuxforphp-8.1-ultimate:7.2-nts
+  services:
+    - mysql:latest
+  script:
+    - _tests/test.sh
+
+php-7.3:
+  image: asclinux/linuxforphp-8.1-ultimate:7.3-nts
+  services:
+    - mysql:latest
   script:
     - _tests/test.sh

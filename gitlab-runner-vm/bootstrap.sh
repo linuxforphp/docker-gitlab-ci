@@ -25,7 +25,7 @@
 #     # export CI_URL=http://git.example.com/ci CI_TOKEN=12345abcdef[ OTHER_VAR=VALUE ...]; curl -SL https://raw.githubusercontent.com/TetraWeb/docker/master/gitlab-runner-vm/bootstrap.sh | bash
 # OR
 # 2.2 Interactive mode (script will ask for all variables to be typed while run)
-#     # curl -SL https://raw.githubusercontent.com/TetraWeb/docker/master/gitlab-runner-vm/bootstrap.sh | bash
+#     # curl -SL https://raw.githubusercontent.com/linuxforphp/docker-gitlab-ci/master/gitlab-runner-vm/bootstrap.sh | bash
 #
 ###############################################################################
 
@@ -104,16 +104,17 @@ do_install() {
     fi
 
     gitlab-ci-multi-runner register -n -r "$CI_TOKEN" -u "$CI_URL" --tag-list 'php,mysql' --executor docker \
-        --docker-image "tetraweb/php:latest" --docker-allowed-images "tetraweb/php:*" \
-        --docker-allowed-services "*" --docker-allowed-services "*/*" $(printf " --env %s" "${ENVVARS[@]}")
+        --docker-image "asclinux/linuxforphp-8.1-ultimate:7.3-nts" --docker-allowed-images \
+        "asclinux/linuxforphp-8.1-ultimate:*" --docker-allowed-services "*" --docker-allowed-services "*/*" \
+        $(printf " --env %s" "${ENVVARS[@]}")
 
     sed -i -- "s/concurrent = 1/concurrent = $CONCURRENT/g" /etc/gitlab-runner/config.toml
 
     cronjob="#!/bin/bash\n"
 #    Automatic updates of images seems to be working in gitlab-runner
-#    for phpver in 5.3 5.4 5.5 5.6 7.0
+#    for phpver in 5.6-nts 7.0-nts 7.1-nts 7.2-nts 7.3-nts
 #    do
-#        cronjob+="docker pull tetraweb/php:$phpver\n"
+#        cronjob+="docker pull asclinux/linuxforphp-8.1-ultimate:$phpver\n"
 #    done
 
     # Cleanup orphaned images

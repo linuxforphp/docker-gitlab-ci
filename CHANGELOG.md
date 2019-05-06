@@ -1,5 +1,10 @@
-# Changelog TetraWeb docker images
+# CHANGELOG - Linux for PHP Ultimate Docker images for GitLab CI
 
+`2019-05-06`
+ - Updates the repository to use Linux for PHP images
+ - [PHP] Adds PHP 7.2 and 7.3
+ - [PHP] Updates the PHP 5.6 and 7.0 modules
+ 
 `2017-05-28`
  - Add yarn
  - memchache commented out in 7.0 and 7.1 due to compilation errors

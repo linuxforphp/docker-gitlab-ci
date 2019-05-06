@@ -1,4 +1,4 @@
-FROM asclinux/linuxforphp-8.1-ultimate:7.0-nts
+FROM asclinux/linuxforphp-8.1-ultimate:7.3-nts
 
 MAINTAINER Andrew Caya <andrewscaya@yahoo.ca>
 
